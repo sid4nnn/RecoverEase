@@ -8,7 +8,6 @@ import { ArrowLeft, Scan, Mic, CheckCircle2, AlertTriangle } from 'lucide-react'
 export default function WoundCare() {
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
-    const [scanning, setScanning] = useState(false);
     const [progress, setProgress] = useState(0);
 
     const totalSteps = 4;
@@ -19,12 +18,10 @@ export default function WoundCare() {
     // Simulated scanning effect
     useEffect(() => {
         if (step === 3) {
-            setScanning(true);
             const interval = setInterval(() => {
                 setProgress(p => {
                     if (p >= 100) {
                         clearInterval(interval);
-                        setScanning(false);
                         setTimeout(nextStep, 500);
                         return 100;
                     }

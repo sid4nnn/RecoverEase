@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# RecoverEase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+RecoverEase is a mobile-first web application designed to support patients during their post-discharge recovery. It provides a simple, reassuring interface for daily check-ins, wound care tracking, and medication management.
 
-Currently, two official plugins are available:
+## Features
+- **Daily Check-in Wizard**: Track mood, pain, sleep, and temperature.
+- **Wound Care**: Step-by-step guidance for checking surgical wounds.
+- **Medications Panel**: Track daily prescriptions and history.
+- **Family Updates**: Share progress with loved ones.
+- **Mobile-First Design**: Optimized for touch interaction and accessibility.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Prerequisites
+- Node.js (v18 or higher recommended)
+- npm or yarn
 
-## React Compiler
+## getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1.  **Clone the repository**
+    ```bash
+    git clone <repository-url>
+    cd RecoverEase
+    ```
 
-## Expanding the ESLint configuration
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3.  **Run locally (Development)**
+    Start the development server with hot reload:
+    ```bash
+    npm run dev
+    ```
+    Open [http://localhost:5173](http://localhost:5173) in your browser.
+    *Tip: Open DevTools and toggle Device Toolbar (Cmd+Shift+M) to view in mobile dimensions (e.g., iPhone size).*
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Deployment
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+RecoverEase is a static Single Page Application (SPA) built with Vite. It can be deployed to any static hosting service.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Build for Production
+Create the production bundle:
+```bash
+npm run build
 ```
+This will generate a `dist` folder containing the compiled assets.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Deploying to Vercel (Recommended)
+1.  Push your code to GitHub.
+2.  Import the project in [Vercel](https://vercel.com).
+3.  Vercel will automatically detect Vite.
+    -   **Build Command**: `npm run build`
+    -   **Output Directory**: `dist`
+4.  Click **Deploy**.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Deploying to Netlify
+1.  Push your code to GitHub.
+2.  Import the project in [Netlify](https://netlify.com).
+3.  Settings:
+    -   **Build Command**: `npm run build`
+    -   **Publish Directory**: `dist`
+4.  Click **Deploy Site**.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Manual Deployment
+You can serve the contents of the `dist` folder using any static file server (e.g., Nginx, Apache, or `serve` package).
+```bash
+npx serve -s dist
 ```
