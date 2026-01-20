@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Calming Palette */
+    --color-bg-primary: #f8fafc;
+    --color-bg-card: #ffffff;
+    --color-primary: #3b82f6;
+    /* Soft Blue */
+    --color-primary-light: #eff6ff;
+    --color-accent: #10b981;
+    /* Calming Green */
+    --color-accent-light: #ecfdf5;
+    --color-text-main: #1e293b;
+    /* Dark slate, high contrast */
+    --color-text-sub: #475569;
+    /* Medium slate, readable */
+
+    /* Layout */
+    --mobile-width: 480px;
+    --nav-height: 80px;
+    /* Taller bottom nav */
+  }
+
+  html {
+    font-size: 112.5%;
+    /* ~18px base size for better readability */
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans antialiased;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-main);
+  }
+
+  /* Accessibility Overrides */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-slate-900 font-bold tracking-tight;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  /* Utility for hiding scrollbar but keeping functionality */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
